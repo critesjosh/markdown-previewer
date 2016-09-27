@@ -1,32 +1,28 @@
 var React = require('react');
 var marked = require('marked');
+var Output = require('../components/Output');
 
 var Main = React.createClass({
+
   getInitialState: function () {
     return {
-      markdownText: ''
+      markdownText: marked('I am using __own__.')
+      html: this.state.markdownText
     }
   },
-  onUpdateMarkdown: function(e) {
+  handleUpdateMarkdown: function(e) {
       this.setState({
         markdownText: marked(e.target.value)
+        html: this.state.markdownText
       });
-
   },
   render: function () {
+    console.log('app main')
     return (
-      <div className="col-sm-12">
-        <div className="col-sm-6">
-          <input
-            placeholder="#This is some markdown"
-            onChange={this.props.onUpdateMarkdown}
-            type="text"
-            />
-        </div>
-        <div className="col-sm-6">
-          <p>{this.state.markdownText}</p>
-        </div>
-      </div>
+      <Output
+        onUpdateMarkdown = {this.handleUpdateMarkdown}
+        html= {this.state.html}
+      />
     )
   }
 })
