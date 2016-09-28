@@ -1,13 +1,14 @@
 var React = require('react');
 var PropTypes = React.PropTypes;
 
-function Output (props) {
+function Component (props) {
     return (
       <div className="col-sm-12">
         <div className="col-sm-6">
           <textarea
-            placeholder="#This is some markdown"
+            placeholder=""
             onChange={props.onUpdateMarkdown}
+            value={props.text}
             type="text"
             />
         </div>
@@ -18,9 +19,9 @@ function Output (props) {
     )
   }
 
-  Output.propTypes = {
+  Component.propTypes = {
     onUpdateMarkdown: PropTypes.func.isRequired,
-    markdownText: PropTypes.string.isRequired
+    html: PropTypes.string.isRequired
   }
 
-module.exports = Output;
+module.exports = Component;
